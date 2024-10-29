@@ -1,6 +1,6 @@
 # Maestro Arch Rpc Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/maestro-arch-rpc.svg)](https://npmjs.org/package/maestro-arch-rpc) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/maestro-arch-rpc)
+[![NPM version](https://img.shields.io/npm/v/maestro-arch-rpc-sdk.svg)](https://npmjs.org/package/maestro-arch-rpc-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/maestro-arch-rpc-sdk)
 
 This library provides convenient access to the Maestro Arch Rpc REST API from server-side TypeScript or JavaScript.
 
@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:maestro-org/maestro-arch-rpc-node-sdk.git
+npm install maestro-arch-rpc-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install maestro-arch-rpc`
 
 ## Usage
 
@@ -23,7 +20,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import MaestroArchRpc from 'maestro-arch-rpc';
+import MaestroArchRpc from 'maestro-arch-rpc-sdk';
 
 const client = new MaestroArchRpc();
 
@@ -42,7 +39,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import MaestroArchRpc from 'maestro-arch-rpc';
+import MaestroArchRpc from 'maestro-arch-rpc-sdk';
 
 const client = new MaestroArchRpc();
 
@@ -210,11 +207,11 @@ add the following import before your first import `from "MaestroArchRpc"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'maestro-arch-rpc/shims/web';
-import MaestroArchRpc from 'maestro-arch-rpc';
+import 'maestro-arch-rpc-sdk/shims/web';
+import MaestroArchRpc from 'maestro-arch-rpc-sdk';
 ```
 
-To do the inverse, add `import "maestro-arch-rpc/shims/node"` (which does import polyfills).
+To do the inverse, add `import "maestro-arch-rpc-sdk/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/maestro-org/maestro-arch-rpc-node-sdk/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -224,7 +221,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import MaestroArchRpc from 'maestro-arch-rpc';
+import MaestroArchRpc from 'maestro-arch-rpc-sdk';
 
 const client = new MaestroArchRpc({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
