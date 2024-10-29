@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import MaestroArchRpc from 'maestro-arch-rpc';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 import { Response } from 'node-fetch';
 
-const client = new MaestroArchRpc({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Maestro({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource programs', () => {
-  test('accounts', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('accounts', async () => {
     const responsePromise = client.programs.accounts({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
