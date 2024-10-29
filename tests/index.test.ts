@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import MaestroArchRpc from 'maestro-arch-rpc';
-import { APIUserAbortError } from 'maestro-arch-rpc';
-import { Headers } from 'maestro-arch-rpc/core';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
+import { APIUserAbortError } from '@maestro-org/maestro-arch-rpc-node-sdk';
+import { Headers } from '@maestro-org/maestro-arch-rpc-node-sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
@@ -20,7 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new MaestroArchRpc({
+    const client = new Maestro({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
     });
@@ -51,15 +51,12 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new MaestroArchRpc({
-        baseURL: 'http://localhost:5000/',
-        defaultQuery: { apiVersion: 'foo' },
-      });
+      const client = new Maestro({ baseURL: 'http://localhost:5000/', defaultQuery: { apiVersion: 'foo' } });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo');
     });
 
     test('multiple default query params', () => {
-      const client = new MaestroArchRpc({
+      const client = new Maestro({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
       });
@@ -67,16 +64,13 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new MaestroArchRpc({
-        baseURL: 'http://localhost:5000/',
-        defaultQuery: { hello: 'world' },
-      });
+      const client = new Maestro({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } });
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
   });
 
   test('custom fetch', async () => {
-    const client = new MaestroArchRpc({
+    const client = new Maestro({
       baseURL: 'http://localhost:5000/',
       fetch: (url) => {
         return Promise.resolve(
@@ -92,7 +86,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new MaestroArchRpc({
+    const client = new Maestro({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       fetch: (...args) => {
         return new Promise((resolve, reject) =>
@@ -118,55 +112,55 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new MaestroArchRpc({ baseURL: 'http://localhost:5000/custom/path/' });
+      const client = new Maestro({ baseURL: 'http://localhost:5000/custom/path/' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new MaestroArchRpc({ baseURL: 'http://localhost:5000/custom/path' });
+      const client = new Maestro({ baseURL: 'http://localhost:5000/custom/path' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     afterEach(() => {
-      process.env['MAESTRO_ARCH_RPC_BASE_URL'] = undefined;
+      process.env['MAESTRO_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new MaestroArchRpc({ baseURL: 'https://example.com' });
+      const client = new Maestro({ baseURL: 'https://example.com' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['MAESTRO_ARCH_RPC_BASE_URL'] = 'https://example.com/from_env';
-      const client = new MaestroArchRpc({});
+      process.env['MAESTRO_BASE_URL'] = 'https://example.com/from_env';
+      const client = new Maestro({});
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['MAESTRO_ARCH_RPC_BASE_URL'] = ''; // empty
-      const client = new MaestroArchRpc({});
+      process.env['MAESTRO_BASE_URL'] = ''; // empty
+      const client = new Maestro({});
       expect(client.baseURL).toEqual('https://arch-testnet.gomaestro-api.org/v0/rpc');
     });
 
     test('blank env variable', () => {
-      process.env['MAESTRO_ARCH_RPC_BASE_URL'] = '  '; // blank
-      const client = new MaestroArchRpc({});
+      process.env['MAESTRO_BASE_URL'] = '  '; // blank
+      const client = new Maestro({});
       expect(client.baseURL).toEqual('https://arch-testnet.gomaestro-api.org/v0/rpc');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new MaestroArchRpc({ maxRetries: 4 });
+    const client = new Maestro({ maxRetries: 4 });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new MaestroArchRpc({});
+    const client2 = new Maestro({});
     expect(client2.maxRetries).toEqual(2);
   });
 });
 
 describe('request building', () => {
-  const client = new MaestroArchRpc({});
+  const client = new Maestro({});
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -208,7 +202,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new MaestroArchRpc({ timeout: 10, fetch: testFetch });
+    const client = new Maestro({ timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -238,7 +232,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new MaestroArchRpc({ fetch: testFetch, maxRetries: 4 });
+    const client = new Maestro({ fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -262,7 +256,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new MaestroArchRpc({ fetch: testFetch, maxRetries: 4 });
+    const client = new Maestro({ fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -291,7 +285,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new MaestroArchRpc({
+    const client = new Maestro({
       fetch: testFetch,
       maxRetries: 4,
       defaultHeaders: { 'X-Stainless-Retry-Count': null },
@@ -323,7 +317,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new MaestroArchRpc({ fetch: testFetch, maxRetries: 4 });
+    const client = new Maestro({ fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -350,7 +344,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new MaestroArchRpc({ fetch: testFetch });
+    const client = new Maestro({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -377,7 +371,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new MaestroArchRpc({ fetch: testFetch });
+    const client = new Maestro({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
