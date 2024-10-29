@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.1 (2024-10-29)
+
+Full Changelog: [v0.0.1-alpha.1...v0.1.0-alpha.1](https://github.com/maestro-org/maestro-arch-rpc-node-sdk/compare/v0.0.1-alpha.1...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** update via SDK Studio ([51e3c74](https://github.com/maestro-org/maestro-arch-rpc-node-sdk/commit/51e3c74a15ad282da5e6bce2aa889238ebdfff39))
+
 ## 0.0.1-alpha.1 (2024-10-29)
 
 Full Changelog: [v0.0.1-alpha.0...v0.0.1-alpha.1](https://github.com/maestro-org/maestro-arch-rpc-node-sdk/compare/v0.0.1-alpha.0...v0.0.1-alpha.1)
