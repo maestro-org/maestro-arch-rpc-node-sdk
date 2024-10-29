@@ -55,12 +55,12 @@ $ cd maestro-arch-rpc-node-sdk
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link maestro-arch-rpc
+$ yarn link maestro-arch-rpc-sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global maestro-arch-rpc
+$ pnpm link -—global maestro-arch-rpc-sdk
 ```
 
 ## Running tests
