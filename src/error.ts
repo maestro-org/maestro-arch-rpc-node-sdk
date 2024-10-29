@@ -2,9 +2,9 @@
 
 import { castToError, Headers } from './core';
 
-export class MaestroArchRpcError extends Error {}
+export class MaestroError extends Error {}
 
-export class APIError extends MaestroArchRpcError {
+export class APIError extends MaestroError {
   readonly status: number | undefined;
   readonly headers: Headers | undefined;
   readonly error: Object | undefined;

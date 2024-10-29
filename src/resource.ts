@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { MaestroArchRpc } from './index';
+import type { Maestro } from './index';
 
 export class APIResource {
-  protected _client: MaestroArchRpc;
+  protected _client: Maestro;
 
-  constructor(client: MaestroArchRpc) {
+  constructor(client: Maestro) {
     this._client = client;
   }
 }

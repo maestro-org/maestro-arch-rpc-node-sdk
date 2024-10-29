@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "maestro-arch-rpc/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "maestro-arch-rpc/*": ["deno/*"],
-      "maestro-arch-rpc": ["deno/index.ts"],
+      "@maestro-org/maestro-arch-rpc-node-sdk/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "@maestro-org/maestro-arch-rpc-node-sdk/*": ["deno/*"],
+      "@maestro-org/maestro-arch-rpc-node-sdk": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

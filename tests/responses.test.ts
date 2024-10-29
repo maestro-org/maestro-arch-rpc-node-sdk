@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'maestro-arch-rpc/core';
-import { Headers } from 'maestro-arch-rpc/_shims/index';
+import { createResponseHeaders } from '@maestro-org/maestro-arch-rpc-node-sdk/core';
+import { Headers } from '@maestro-org/maestro-arch-rpc-node-sdk/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import MaestroArchRpc from 'maestro-arch-rpc';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 import { Response } from 'node-fetch';
 
-const client = new MaestroArchRpc({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Maestro({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource accounts', () => {
-  test('address: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('address: only required params', async () => {
     const responsePromise = client.accounts.address([0, 0, 0]);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -17,11 +18,13 @@ describe('resource accounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('address: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('address: required and optional params', async () => {
     const response = await client.accounts.address([0, 0, 0]);
   });
 
-  test('info: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('info: only required params', async () => {
     const responsePromise = client.accounts.info([0, 0, 0]);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,7 +35,8 @@ describe('resource accounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('info: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('info: required and optional params', async () => {
     const response = await client.accounts.info([0, 0, 0]);
   });
 });

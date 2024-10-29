@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'maestro-arch-rpc/core';
-import { Blob } from 'maestro-arch-rpc/_shims/index';
-import { toFile } from 'maestro-arch-rpc';
+import { multipartFormRequestOptions, createForm } from '@maestro-org/maestro-arch-rpc-node-sdk/core';
+import { Blob } from '@maestro-org/maestro-arch-rpc-node-sdk/_shims/index';
+import { toFile } from '@maestro-org/maestro-arch-rpc-node-sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
