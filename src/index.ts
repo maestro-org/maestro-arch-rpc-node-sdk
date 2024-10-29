@@ -10,7 +10,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['MAESTRO_ARCH_RPC_BASE_URL'].
+   * Defaults to process.env['MAESTRO_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -65,15 +65,15 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Maestro Arch Rpc API.
+ * API Client for interfacing with the Maestro API.
  */
-export class MaestroArchRpc extends Core.APIClient {
+export class Maestro extends Core.APIClient {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Maestro Arch Rpc API.
+   * API Client for interfacing with the Maestro API.
    *
-   * @param {string} [opts.baseURL=process.env['MAESTRO_ARCH_RPC_BASE_URL'] ?? https://arch-testnet.gomaestro-api.org/v0/rpc] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['MAESTRO_BASE_URL'] ?? https://arch-testnet.gomaestro-api.org/v0/rpc] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -81,7 +81,7 @@ export class MaestroArchRpc extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('MAESTRO_ARCH_RPC_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('MAESTRO_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://arch-testnet.gomaestro-api.org/v0/rpc`,
@@ -114,10 +114,10 @@ export class MaestroArchRpc extends Core.APIClient {
     };
   }
 
-  static MaestroArchRpc = this;
+  static Maestro = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static MaestroArchRpcError = Errors.MaestroArchRpcError;
+  static MaestroError = Errors.MaestroError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -136,7 +136,7 @@ export class MaestroArchRpc extends Core.APIClient {
 }
 
 export const {
-  MaestroArchRpcError,
+  MaestroError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -154,7 +154,7 @@ export const {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace MaestroArchRpc {
+export namespace Maestro {
   export import RequestOptions = Core.RequestOptions;
 
   export import Accounts = API.Accounts;
@@ -184,4 +184,4 @@ export namespace MaestroArchRpc {
   export import TransactionSendParams = API.TransactionSendParams;
 }
 
-export default MaestroArchRpc;
+export default Maestro;

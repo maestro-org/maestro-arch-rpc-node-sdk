@@ -1,21 +1,18 @@
-# Maestro Arch Rpc Node API Library
+# Maestro Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/maestro-arch-rpc.svg)](https://npmjs.org/package/maestro-arch-rpc) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/maestro-arch-rpc)
+[![NPM version](https://img.shields.io/npm/v/@maestro-org/maestro-arch-rpc-node-sdk.svg)](https://npmjs.org/package/@maestro-org/maestro-arch-rpc-node-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@maestro-org/maestro-arch-rpc-node-sdk)
 
-This library provides convenient access to the Maestro Arch Rpc REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Maestro REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.maestro-arch-rpc.com](https://docs.maestro-arch-rpc.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.gomaestro.org](https://docs.gomaestro.org/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/maestro-arch-rpc-node.git
+npm install @maestro-org/maestro-arch-rpc-node-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install maestro-arch-rpc`
 
 ## Usage
 
@@ -23,9 +20,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import MaestroArchRpc from 'maestro-arch-rpc';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 
-const client = new MaestroArchRpc();
+const client = new Maestro();
 
 async function main() {
   const response = await client.accounts.address([0, 0, 0]);
@@ -42,13 +39,13 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import MaestroArchRpc from 'maestro-arch-rpc';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 
-const client = new MaestroArchRpc();
+const client = new Maestro();
 
 async function main() {
-  const params: MaestroArchRpc.AccountAddressParams = [0, 0, 0];
-  const response: MaestroArchRpc.AccountAddressResponse = await client.accounts.address(params);
+  const params: Maestro.AccountAddressParams = [0, 0, 0];
+  const response: Maestro.AccountAddressResponse = await client.accounts.address(params);
 }
 
 main();
@@ -66,7 +63,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const response = await client.accounts.address([0, 0, 0]).catch(async (err) => {
-    if (err instanceof MaestroArchRpc.APIError) {
+    if (err instanceof Maestro.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -103,7 +100,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new MaestroArchRpc({
+const client = new Maestro({
   maxRetries: 0, // default is 2
 });
 
@@ -120,7 +117,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new MaestroArchRpc({
+const client = new Maestro({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -144,7 +141,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new MaestroArchRpc();
+const client = new Maestro();
 
 const response = await client.accounts.address([0, 0, 0]).asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -205,17 +202,17 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "MaestroArchRpc"`:
+add the following import before your first import `from "Maestro"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'maestro-arch-rpc/shims/web';
-import MaestroArchRpc from 'maestro-arch-rpc';
+import '@maestro-org/maestro-arch-rpc-node-sdk/shims/web';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 ```
 
-To do the inverse, add `import "maestro-arch-rpc/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/maestro-arch-rpc-node/tree/main/src/_shims#readme)).
+To do the inverse, add `import "@maestro-org/maestro-arch-rpc-node-sdk/shims/node"` (which does import polyfills).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/maestro-org/maestro-arch-rpc-node-sdk/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -224,9 +221,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import MaestroArchRpc from 'maestro-arch-rpc';
+import Maestro from '@maestro-org/maestro-arch-rpc-node-sdk';
 
-const client = new MaestroArchRpc({
+const client = new Maestro({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -251,7 +248,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new MaestroArchRpc({
+const client = new Maestro({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
@@ -271,7 +268,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/maestro-arch-rpc-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/maestro-org/maestro-arch-rpc-node-sdk/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

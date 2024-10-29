@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'maestro-arch-rpc/shims/node'
- *   import 'maestro-arch-rpc/shims/web'
+ *   import '@maestro-org/maestro-arch-rpc-node-sdk/shims/node'
+ *   import '@maestro-org/maestro-arch-rpc-node-sdk/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

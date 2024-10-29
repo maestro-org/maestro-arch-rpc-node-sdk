@@ -1,12 +1,12 @@
 {
-  "name": "maestro-arch-rpc",
+  "name": "@maestro-org/maestro-arch-rpc-node-sdk",
   "version": "0.1.0-alpha.1",
-  "description": "The official TypeScript library for the Maestro Arch Rpc API",
-  "author": "Maestro Arch Rpc <support@gomaestro.org>",
+  "description": "The official TypeScript library for the Maestro API",
+  "author": "Maestro <info@gomaestro.org>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/maestro-arch-rpc-node",
+  "repository": "github:maestro-org/maestro-arch-rpc-node-sdk",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
@@ -60,8 +60,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "maestro-arch-rpc": ".",
-    "maestro-arch-rpc/*": "./src/*"
+    "@maestro-org/maestro-arch-rpc-node-sdk": ".",
+    "@maestro-org/maestro-arch-rpc-node-sdk/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {
