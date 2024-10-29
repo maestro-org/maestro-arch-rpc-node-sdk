@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { MaestroArchRpc } from 'maestro-arch-rpc';
+import { MaestroArchRpc } from 'maestro-arch-rpc-sdk';
 
 const { stringifyQuery } = MaestroArchRpc.prototype as any;
 

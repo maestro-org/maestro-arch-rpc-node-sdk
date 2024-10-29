@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'maestro-arch-rpc/shims/${shims.kind}'\` before importing anything else from maestro-arch-rpc`,
+      `you must \`import 'maestro-arch-rpc-sdk/shims/${shims.kind}'\` before importing anything else from maestro-arch-rpc-sdk`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'maestro-arch-rpc/shims/${shims.kind}'\` after \`import 'maestro-arch-rpc/shims/${kind}'\``,
+      `can't \`import 'maestro-arch-rpc-sdk/shims/${shims.kind}'\` after \`import 'maestro-arch-rpc-sdk/shims/${kind}'\``,
     );
   }
   auto = options.auto;
