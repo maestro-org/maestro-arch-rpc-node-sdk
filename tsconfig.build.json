@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "maestro-arch-rpc/*": ["dist/src/*"],
-      "maestro-arch-rpc": ["dist/src/index.ts"],
+      "maestro-arch-rpc-sdk/*": ["dist/src/*"],
+      "maestro-arch-rpc-sdk": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

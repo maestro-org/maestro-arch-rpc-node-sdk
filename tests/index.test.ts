@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import MaestroArchRpc from 'maestro-arch-rpc';
-import { APIUserAbortError } from 'maestro-arch-rpc';
-import { Headers } from 'maestro-arch-rpc/core';
+import MaestroArchRpc from 'maestro-arch-rpc-sdk';
+import { APIUserAbortError } from 'maestro-arch-rpc-sdk';
+import { Headers } from 'maestro-arch-rpc-sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {

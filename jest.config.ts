@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^maestro-arch-rpc$': '<rootDir>/src/index.ts',
-    '^maestro-arch-rpc/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^maestro-arch-rpc/(.*)$': '<rootDir>/src/$1',
+    '^maestro-arch-rpc-sdk$': '<rootDir>/src/index.ts',
+    '^maestro-arch-rpc-sdk/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^maestro-arch-rpc-sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

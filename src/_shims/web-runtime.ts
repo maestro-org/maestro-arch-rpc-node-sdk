@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from 'maestro-arch-rpc'\`:
-- \`import 'maestro-arch-rpc/shims/node'\` (if you're running on Node)
-- \`import 'maestro-arch-rpc/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from 'maestro-arch-rpc-sdk'\`:
+- \`import 'maestro-arch-rpc-sdk/shims/node'\` (if you're running on Node)
+- \`import 'maestro-arch-rpc-sdk/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;
