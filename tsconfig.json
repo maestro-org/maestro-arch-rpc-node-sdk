@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "maestro-arch-rpc-sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "maestro-arch-rpc-sdk/*": ["src/*"],
-      "maestro-arch-rpc-sdk": ["src/index.ts"],
+      "maestro-arch-rpc/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "maestro-arch-rpc/*": ["src/*"],
+      "maestro-arch-rpc": ["src/index.ts"],
     },
     "noEmit": true,
 

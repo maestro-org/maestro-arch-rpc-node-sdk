@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'maestro-arch-rpc-sdk/uploads';
-import { File } from 'maestro-arch-rpc-sdk/_shims/index';
+import { toFile, type ResponseLike } from 'maestro-arch-rpc/uploads';
+import { File } from 'maestro-arch-rpc/_shims/index';
 
 class MyClass {
   name: string = 'foo';
